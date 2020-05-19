@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
 
     this.http.post('https://reqres.in/api/login', this.loginForm.value).subscribe(resp => {
       console.log(resp);
-      this.router.navigate(['home']);
+      this.router.navigate(['home'], { replaceUrl: true });
     }, err => {
       console.error(err);
       this.errorAlert(err.error.error);
