@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'save-item',
+    path: 'save',
     loadChildren: () => import('./save-item/save-item.module').then( m => m.SaveItemPageModule)
   },
 ];

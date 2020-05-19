@@ -10,8 +10,8 @@
     <ion-input type="text" formControlName="title"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Price</ion-label>
-    <ion-input type="number" formControlName="price"></ion-input>
+    <ion-label position="floating">Quantity</ion-label>
+    <ion-input type="number" formControlName="quantity"></ion-input>
   </ion-item>
-  <ion-button expand="full" [disabled]="!itemForm.valid">Guardar</ion-button>
+  <ion-button expand="full" [disabled]="!itemForm.valid" (click)="save()">Guardar</ion-button>
 </ion-content>

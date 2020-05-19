@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ItemsService } from '../services/items.service';
 
 @Component({
   selector: 'app-save-item',
@@ -10,14 +11,15 @@ export class SaveItemPage implements OnInit {
 
   itemForm: FormGroup;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _item: ItemsService
   ) {
     this.itemForm = this.fb.group({
       title: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(50)])
       ],
-      price: [null, Validators.compose([
+      quantity: [null, Validators.compose([
         Validators.required,
         Validators.min(1),
       ])]
@@ -25,6 +27,10 @@ export class SaveItemPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  save() {
+    this._item.saveItem(this.itemForm.value);
   }
 
 }
