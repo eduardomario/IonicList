@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Save Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [formGroup]="itemForm">
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input type="text" formControlName="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Quantity</ion-label>
+    <ion-input type="number" formControlName="quantity"></ion-input>
+  </ion-item>
+  <ion-button expand="full" [disabled]="!itemForm.valid" (click)="save()">Guardar</ion-button>
+</ion-content>
