@@ -68,4 +68,15 @@ export class SaveItemPage implements OnInit {
     }
   }
 
+  deleteItem() {
+    if (this.itemId) {
+      this._item.deleteItem(this.itemId).subscribe(resp => {
+        console.log(resp);
+        this.router.navigate(['list'], { replaceUrl: true });
+      }, err => {
+        console.error(err);
+      });
+    }
+  }
+
 }

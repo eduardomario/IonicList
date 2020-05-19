@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Save Item</ion-title>
+    <ion-buttons slot="primary" *ngIf="itemId">
+      <ion-button color="danger" (click)="deleteItem()">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

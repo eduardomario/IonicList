@@ -29,4 +29,9 @@ export class ItemsService {
     const url = `${this.endpoint}/${id}`;
     return this.http.put<any>(url, item);
   }
+
+  deleteItem(id: string) {
+    const url = `${this.endpoint}/${id}`;
+    return this.http.delete<any>(url);
+  }
 }
