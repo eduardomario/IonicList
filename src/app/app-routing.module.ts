@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
   },
   {
-    path: 'save',
+    path: 'item',
     loadChildren: () => import('./save-item/save-item.module').then( m => m.SaveItemPageModule)
   },
 ];

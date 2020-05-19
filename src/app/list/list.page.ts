@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Item } from '../models/items-model';
+import { ItemsService } from '../services/items.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -8,23 +11,30 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ListPage implements OnInit {
 
-  listForm: FormGroup;
+  items: Item[] = [];
   constructor(
-    private fb: FormBuilder
-  ) {
-    this.listForm = this.fb.group({
-      title: ['', Validators.compose([
-        Validators.required,
-        Validators.maxLength(50)])
-      ],
-      price: [null, Validators.compose([
-        Validators.required,
-        Validators.min(1),
-      ])]
+    private router: Router,
+    private _item: ItemsService
+  ) { }
+
+  ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this._item.getItem().subscribe(resp => {
+      console.log(resp);
+      this.items = resp;
+    }, err => {
+      console.error(err);
     });
   }
 
-  ngOnInit() {
+  newItem() {
+    this.router.navigate(['item']);
+  }
+
+  editItem(id: string) {
+    this.router.navigate(['item'], { queryParams: { id } });
   }
 
 }
