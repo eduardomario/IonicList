@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SaveItemPageRoutingModule } from './save-item-routing.module';
 
 import { SaveItemPage } from './save-item.page';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { SaveItemPage } from './save-item.page';
     ReactiveFormsModule,
     IonicModule,
     SaveItemPageRoutingModule
+  ],
+  providers: [
+    Camera
   ],
   declarations: [SaveItemPage]
 })
