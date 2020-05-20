@@ -18,5 +18,13 @@
     <ion-label position="floating">Quantity</ion-label>
     <ion-input type="number" formControlName="quantity"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-button color="secondary" (click)="addPicture()">
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-item>
+    <img [src]="itemForm.controls.image.value" alt="">
+  </ion-item>
   <ion-button expand="full" [disabled]="!itemForm.valid" (click)="save()">Guardar</ion-button>
 </ion-content>
