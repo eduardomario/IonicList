@@ -14,17 +14,20 @@ export class ListPage implements OnInit {
   items: Item[] = [];
   constructor(
     private router: Router,
-    private _item: ItemsService
+    private itemService: ItemsService
   ) { }
 
   ngOnInit() {
   }
 
   ionViewWillEnter() {
-    this._item.getItem().subscribe(resp => {
+    this.itemService.setIsLoading(true);
+    this.itemService.getItem().subscribe(resp => {
       console.log(resp);
+      this.itemService.setIsLoading(false);
       this.items = resp;
     }, err => {
+      this.itemService.setIsLoading(false);
       console.error(err);
     });
   }

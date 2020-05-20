@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { ItemsService } from '../services/items.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginPage implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private alertCtrl: AlertController,
-    private http: HttpClient
+    private http: HttpClient,
+    private itemService: ItemsService
   ) {
     this.loginForm = this.fb.group({
       email: ['eve.holt@reqres.in', Validators.compose([
@@ -41,11 +43,14 @@ export class LoginPage implements OnInit {
       return;
     }
 
+    this.itemService.setIsLoading(true);
     this.http.post('https://reqres.in/api/login', this.loginForm.value).subscribe(resp => {
       console.log(resp);
+      this.itemService.setIsLoading(false);
       this.router.navigate(['home'], { replaceUrl: true });
     }, err => {
       console.error(err);
+      this.itemService.setIsLoading(false);
       this.errorAlert(err.error.error);
     });
   }
